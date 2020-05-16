@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
+import FunctionComponent from './FunctionComponent';
+import ClassComponent from './ClassComponent';
 
 function App() {
+  const history = useHistory();
+  const irAFuncion = () => {
+    history.push('/funcion');
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+        <button onClick={irAFuncion}>Componente funcion</button>
+        {' - '}
+        <Link to="/clase">Componente clase</Link>
+        <Switch>
+          <Route path="/funcion" component={FunctionComponent} />
+          <Route path="/clase" component={ClassComponent} />
+        </Switch>
     </div>
-  );
+  )
 }
 
 export default App;
